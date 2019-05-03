@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router';
+import Button from '@material-ui/core/Button';
 
 import logo from './logo.svg';
 import './App.css';
@@ -12,6 +13,7 @@ const App: React.FC = () => {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
+        <Button variant="contained" color="secondary" className="mb-10">Hello</Button>
         <a
           className="App-link"
           href="https://reactjs.org"
