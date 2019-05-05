@@ -4,7 +4,15 @@ import withStyles, { WithStyles, StyleRules } from '@material-ui/core/styles/wit
 import createStyles from '@material-ui/core/styles/createStyles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import { navigationLinks } from '../../data/navigationLinks';
+
 const styles = (theme: Theme): StyleRules => createStyles({
+    nav: {
+        paddingBottom: 15
+    },
+    navItem: {
+        paddingRight: 15
+    },
     icon: {
         fontSize: 24,
         margin: 10
@@ -16,6 +24,11 @@ const styles = (theme: Theme): StyleRules => createStyles({
 
 const Footer: FC<WithStyles<typeof styles>> = ({ classes }) => (
     <nav>
+        <div className={classes.nav}>
+            {navigationLinks.map((link, index) => (
+                <a href={link.path} className={classes.navItem} key={index}>{link.name}</a>
+            ))}
+        </div>
         <div>
             <a href="https://twitter.com/akashi__akashi" target="_blank" className={classes.icon}>
                 <FontAwesomeIcon icon={['fab', 'twitter']} />

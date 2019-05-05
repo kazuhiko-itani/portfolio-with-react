@@ -16,7 +16,6 @@ const styles = (theme: Theme): StyleRules => createStyles({
     },
     navItem: {
         fontSize: 18,
-        textDecoration: 'none',
         [theme.breakpoints.down('sm')]: {
             display: 'none',
         }
