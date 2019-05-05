@@ -12,19 +12,23 @@ import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 import HeaderNav from './container/layout/HeaderNav';
 import Footer from './components/layout/Footer';
+import Home from './components/pages/Home';
 
-import './assets/common.css';
+import './assets/css/common.css';
 import withRoot from './utils/withRoot';
 import createStyles from '@material-ui/core/styles/createStyles';
 
 library.add(faTwitter, faGithub);
 
 const styles = (theme: Theme): StyleRules => createStyles({
-  headerNav: {
-    padding: '30px',
+  container: {
+    margin: '30px 15%',
     [theme.breakpoints.down('sm')]: {
-      padding: 15,
+      margin: '15px'
     }
+  },
+  content: {
+    padding: 30,
   },
   footer: {
     textAlign: 'center'
@@ -33,12 +37,20 @@ const styles = (theme: Theme): StyleRules => createStyles({
 
 const App: React.FC<WithStyles<typeof styles>> = ({ classes }: WithStyles<typeof styles>) => {
   return (
-    <div>
-      <Grid container>
-        <Grid item sm={12} md={4} className={classes.headerNav}>
-          <HeaderNav />
+    <div className={classes.container}>
+      <div>
+        <Grid container>
+          <Grid item sm={12} md={4}>
+            <HeaderNav />
+          </Grid>
         </Grid>
-      </Grid>
+      </div>
+      <div className={classes.content}>
+        <Switch>
+          <Route path="/" component={Home} />
+          <Redirect to="/" />
+        </Switch>
+      </div>
       <div className={classes.footer}>
           <Footer />
       </div>
