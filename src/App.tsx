@@ -5,14 +5,19 @@ import withStyles, {
   WithStyles,
   StyleRules
 } from '@material-ui/core/styles/withStyles';
-
 import { Grid } from '@material-ui/core';
 
-import HeaderNav from './container/layout/HeaderNav';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
 
-import './App.css';
+import HeaderNav from './container/layout/HeaderNav';
+import Footer from './components/layout/Footer';
+
+import './assets/common.css';
 import withRoot from './utils/withRoot';
 import createStyles from '@material-ui/core/styles/createStyles';
+
+library.add(faTwitter, faGithub);
 
 const styles = (theme: Theme): StyleRules => createStyles({
   headerNav: {
@@ -21,15 +26,23 @@ const styles = (theme: Theme): StyleRules => createStyles({
       padding: 15,
     }
   },
+  footer: {
+    textAlign: 'center'
+  }
 });
 
 const App: React.FC<WithStyles<typeof styles>> = ({ classes }: WithStyles<typeof styles>) => {
   return (
-    <Grid container>
-      <Grid item sm={12} md={4} className={classes.headerNav}>
-        <HeaderNav />
+    <div>
+      <Grid container>
+        <Grid item sm={12} md={4} className={classes.headerNav}>
+          <HeaderNav />
+        </Grid>
       </Grid>
-    </Grid>
+      <div className={classes.footer}>
+          <Footer />
+      </div>
+    </div>
   );
 }
 

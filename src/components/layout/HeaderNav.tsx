@@ -9,7 +9,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import MobileHeaderNavMenu from './MobileHeaderNavMenu';
 import { navigationLinks } from '../../data/navigationLinks';
 
-
 const styles = (theme: Theme): StyleRules => createStyles({
     nav: {
         display: 'flex',
@@ -17,7 +16,6 @@ const styles = (theme: Theme): StyleRules => createStyles({
     },
     navItem: {
         fontSize: 18,
-        color: theme.palette.primary.dark,
         textDecoration: 'none',
         [theme.breakpoints.down('sm')]: {
             display: 'none',
