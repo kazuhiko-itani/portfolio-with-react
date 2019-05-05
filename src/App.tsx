@@ -1,30 +1,36 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router';
-import Button from '@material-ui/core/Button';
+import { Theme } from '@material-ui/core/styles/createMuiTheme';
+import withStyles, {
+  WithStyles,
+  StyleRules
+} from '@material-ui/core/styles/withStyles';
 
-import logo from './logo.svg';
+import { Grid } from '@material-ui/core';
+
+import HeaderNav from './container/layout/HeaderNav';
+
 import './App.css';
+import withRoot from './utils/withRoot';
+import createStyles from '@material-ui/core/styles/createStyles';
 
-const App: React.FC = () => {
+const styles = (theme: Theme): StyleRules => createStyles({
+  headerNav: {
+    padding: '30px',
+    [theme.breakpoints.down('sm')]: {
+      padding: 15,
+    }
+  },
+});
+
+const App: React.FC<WithStyles<typeof styles>> = ({ classes }: WithStyles<typeof styles>) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <Button variant="contained" color="secondary" className="mb-10">Hello</Button>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn
-        </a>
-      </header>
-    </div>
+    <Grid container>
+      <Grid item sm={12} md={4} className={classes.headerNav}>
+        <HeaderNav />
+      </Grid>
+    </Grid>
   );
 }
 
-export default App;
+export default withRoot(withStyles(styles)(App));
