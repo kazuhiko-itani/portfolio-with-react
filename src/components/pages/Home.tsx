@@ -29,7 +29,7 @@ const styles = (theme: Theme): StyleRules => createStyles({
 
 const Home: FC<WithStyles<typeof styles>> = ({ classes }) => (
     <div>
-        <Typography variant="h2" align="right" className={classes.title}>
+        <Typography variant="h1" align="right" className={classes.title}>
             Akashixi<br />Portfolio<br />Site
         </Typography>
         <img src={MainImage} alt="猫の写真" className={classes.image} />

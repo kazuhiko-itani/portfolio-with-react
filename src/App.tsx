@@ -14,6 +14,7 @@ import HeaderNav from './container/layout/HeaderNav';
 import Footer from './components/layout/Footer';
 import Home from './components/pages/Home';
 import About from './components/pages/About';
+import Works from './components/pages/Works';
 
 import './assets/css/common.css';
 import withRoot from './utils/withRoot';
@@ -53,6 +54,7 @@ const App: React.FC<WithStyles<typeof styles>> = ({ classes }: WithStyles<typeof
         <Switch>
           <Route path="/" component={Home} exact />
           <Route path="/about" component={About} exact />
+          <Route path="/works" component={Works} exact />
           <Redirect to="/" />
         </Switch>
       </div>

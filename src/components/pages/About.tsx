@@ -16,6 +16,9 @@ const styles = (theme: Theme): StyleRules => createStyles({
         [theme.breakpoints.down('sm')]: {
             width: '60%'
         }
+    },
+    heading: {
+        padding: '10px 0'
     }
 });
 
@@ -26,7 +29,7 @@ const About: FC<WithStyles<typeof styles>> = ({ classes }) => (
                 <img src={myIcon} alt="自分のツイッターアイコン" className={classes.image} />
             </Grid>
             <Grid sm={12} md={6}>
-                <Typography variant="h3">経歴</Typography>
+                <Typography variant="h2" className={classes.heading}>経歴</Typography>
                 <ul>
                     <li>1989年生まれ（29歳） 東京在住</li>
                     <li>大阪市公務員（半年）</li>
@@ -34,7 +37,7 @@ const About: FC<WithStyles<typeof styles>> = ({ classes }) => (
                     <li>アフィリエイター（1年半）</li>
                     <li>Webエンジニア（2018年11月〜）</li>
                 </ul>
-                <Typography variant="h3">技術</Typography>
+                <Typography variant="h2" className={classes.heading}>技術</Typography>
                 <ul>
                     <li>Laravel（PHP）</li>
                     <li>jQuery</li>

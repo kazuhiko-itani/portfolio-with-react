@@ -11,8 +11,12 @@ const theme = createMuiTheme({
     },
     typography: {
         useNextVariants: true,
-        h3: {
+        h2: {
             fontSize: 28,
+            color: '#616161'
+        },
+        h3: {
+            fontSize: 20,
             color: '#616161'
         }
     },
