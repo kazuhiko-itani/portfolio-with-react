@@ -13,6 +13,7 @@ import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
 import HeaderNav from './container/layout/HeaderNav';
 import Footer from './components/layout/Footer';
 import Home from './components/pages/Home';
+import About from './components/pages/About';
 
 import './assets/css/common.css';
 import withRoot from './utils/withRoot';
@@ -28,7 +29,10 @@ const styles = (theme: Theme): StyleRules => createStyles({
     }
   },
   content: {
-    padding: 30,
+    padding: '50px 50px',
+    [theme.breakpoints.down('sm')]: {
+      padding: '30px 20px'
+    }
   },
   footer: {
     textAlign: 'center'
@@ -47,7 +51,8 @@ const App: React.FC<WithStyles<typeof styles>> = ({ classes }: WithStyles<typeof
       </div>
       <div className={classes.content}>
         <Switch>
-          <Route path="/" component={Home} />
+          <Route path="/" component={Home} exact />
+          <Route path="/about" component={About} exact />
           <Redirect to="/" />
         </Switch>
       </div>

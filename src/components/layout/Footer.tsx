@@ -30,10 +30,20 @@ const Footer: FC<WithStyles<typeof styles>> = ({ classes }) => (
             ))}
         </div>
         <div>
-            <a href="https://twitter.com/akashi__akashi" target="_blank" className={classes.icon}>
+            <a
+                href="https://twitter.com/akashi__akashi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={classes.icon}
+            >
                 <FontAwesomeIcon icon={['fab', 'twitter']} />
             </a>
-            <a href="https://github.com/kazuhiko-itani" target="_blank" className={classes.icon}>
+            <a
+                href="https://github.com/kazuhiko-itani"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={classes.icon}
+            >
                 <FontAwesomeIcon icon={['fab', 'github']} />
             </a>
         </div>

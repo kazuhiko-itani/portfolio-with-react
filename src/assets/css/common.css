@@ -7,3 +7,8 @@ a {
   color: #616161;
   text-decoration: none;
 }
+
+li {
+  list-style-type: circle;
+  padding-bottom: 15px;
+}

@@ -2,9 +2,7 @@ import React, { FC } from 'react';
 import { Theme } from '@material-ui/core/styles/createMuiTheme';
 import withStyles, { WithStyles, StyleRules } from '@material-ui/core/styles/withStyles';
 import createStyles from '@material-ui/core/styles/createStyles';
-
 import Typography from '@material-ui/core/Typography'
-import { faThemeco } from '@fortawesome/free-brands-svg-icons';
 
 import MainImage from '../../assets/img/mainImage.jpg';
 
