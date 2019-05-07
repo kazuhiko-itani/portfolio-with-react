@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { Theme } from '@material-ui/core/styles/createMuiTheme';
 import withStyles, { WithStyles, StyleRules } from '@material-ui/core/styles/withStyles';
 import createStyles from '@material-ui/core/styles/createStyles';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { navigationLinks } from '../../data/navigationLinks';
@@ -26,7 +27,7 @@ const Footer: FC<WithStyles<typeof styles>> = ({ classes }) => (
     <nav>
         <div className={classes.nav}>
             {navigationLinks.map((link, index) => (
-                <a href={link.path} className={classes.navItem} key={index}>{link.name}</a>
+                <Link to={link.path} className={classes.navItem} key={index}>{link.name}</Link>
             ))}
         </div>
         <div>

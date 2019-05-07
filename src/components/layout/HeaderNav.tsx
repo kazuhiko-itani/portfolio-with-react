@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { Theme } from '@material-ui/core/styles/createMuiTheme';
 import withStyles, { WithStyles, StyleRules } from '@material-ui/core/styles/withStyles';
 import createStyles from '@material-ui/core/styles/createStyles';
+import { Link } from 'react-router-dom';
 
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -46,7 +47,7 @@ type PropsWithStyles = Props & WithStyles<typeof styles>;
 const HeaderNav: FC<PropsWithStyles> = ({ classes, open, toggle }) => (
     <nav className={classes.nav}>
         {navigationLinks.map((link, index) => (
-            <a href={link.path} className={classes.navItem} key={index}>{link.name}</a>
+            <Link to={link.path} className={classes.navItem} key={index}>{link.name}</Link>
         ))}
         <IconButton className={classes.iconButton} color="inherit" aria-label="Menu" onClick={toggle}>
             <MenuIcon className={classes.menuIcon} />

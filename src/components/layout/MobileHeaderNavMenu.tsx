@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { Theme } from '@material-ui/core/styles/createMuiTheme';
 import withStyles, { WithStyles, StyleRules } from '@material-ui/core/styles/withStyles';
 import createStyles from '@material-ui/core/styles/createStyles';
+import { Link } from 'react-router-dom';
 
 import { navigationLinks } from '../../data/navigationLinks';
 
@@ -48,7 +49,7 @@ const MobileHeaderNavMenu: FC<PropsWithStyles> =({ classes, open }) => (
             <ul className={classes.navItemList}>
                 {navigationLinks.map((link, index) => (
                     <li className={classes.navItem} key={index}>
-                        <a href={link.path} className={classes.navItemLink}>{link.name}</a>
+                        <Link to={link.path} className={classes.navItemLink}>{link.name}</Link>
                     </li>
                 ))}
             </ul>
