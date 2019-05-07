@@ -16,3 +16,8 @@ jobs:
             - node_modules
           key: test-{{ .Branch }}-{{ checksum "package-lock.json" }}
       - run: npm run lint
+      - deploy:
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              curl -X POST -d {} https://api.netlify.com/build_hooks/5cd158ee8acbb0c1d93652be
+            fi
