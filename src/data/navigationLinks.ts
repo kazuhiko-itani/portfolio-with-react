@@ -18,6 +18,6 @@ export const navigationLinks: Link[] = [
     },
     {
         name: 'Contact',
-        path: '/contacts'
+        path: '/contact'
     },
 ];
