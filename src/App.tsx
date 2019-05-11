@@ -15,7 +15,7 @@ import Footer from './components/layout/Footer';
 import Home from './components/pages/Home';
 import About from './components/pages/About';
 import Works from './components/pages/Works';
-import Contact from './components/pages/Contact';
+import Contact from './container/pages/Contact';
 
 import './assets/css/common.css';
 import withRoot from './utils/withRoot';

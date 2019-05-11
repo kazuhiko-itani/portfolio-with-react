@@ -39,7 +39,20 @@ const styles = (theme: Theme): StyleRules => createStyles({
     }
 });
 
-const Contact: FC<WithStyles<typeof styles>> = ({ classes }) => (
+interface Props {
+    nameInput: (input: string) => void;
+    emailInput: (input: string) => void;
+    messageInput: (input: string) => void;
+};
+
+type PropsWithStyle = Props & WithStyles<typeof styles>;
+
+const Contact: FC<PropsWithStyle> =
+    ({ classes,
+       nameInput,
+       emailInput,
+       messageInput
+    }) => (
     <div>
         <div>
             <Typography variant="h2" className={classes.heading}>お問い合わせ</Typography>
@@ -52,15 +65,28 @@ const Contact: FC<WithStyles<typeof styles>> = ({ classes }) => (
         <div className={classes.formBox}>
             <FormControl className={classes.form}>
                 <FormLabel required={true}>お名前</FormLabel>
-                <Input placeholder="your name" fullWidth={true} className={classes.input} />
+                <Input
+                    placeholder="your name"
+                    fullWidth={true}
+                    className={classes.input}
+                    onChange={e => nameInput(e.target.value)} />
             </FormControl>
             <FormControl className={classes.form}>
                 <FormLabel required={true}>メールアドレス</FormLabel>
-                <Input placeholder="example@gmail.com" fullWidth={true} className={classes.input} />
+                <Input
+                    placeholder="example@gmail.com"
+                    fullWidth={true}
+                    className={classes.input}
+                    onChange={e => nameInput(e.target.value)} />
             </FormControl>
             <FormControl className={classes.form}>
                 <FormLabel required={true}>メッセージ内容</FormLabel>
-                <TextField fullWidth={true} className={classes.input} multiline rows={4} variant='outlined'></TextField>
+                <TextField
+                    fullWidth={true}
+                    className={classes.input}
+                    multiline rows={4}
+                    variant='outlined'
+                    onChange={e => messageInput(e.target.value)}></TextField>
             </FormControl>
         </div>
         <div className={classes.buttonArea}>
