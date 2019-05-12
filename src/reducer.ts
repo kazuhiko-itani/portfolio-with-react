@@ -1,22 +1,26 @@
 import { Reducer } from 'redux';
+import { AxiosError } from 'axios';
+
 import { FormAction, FormActionType } from './actions/form';
 
-export interface inputState {
+export interface formState {
     name: string;
     email: string;
     message: string;
+    resStatus: string;
 }
 
-export const initialState: inputState = {
+export const initialState: formState = {
     name: '',
     email: '',
-    message: ''
+    message: '',
+    resStatus: ''
 };
 
-const formReducer: Reducer<inputState, FormAction> = (
-    state: inputState = initialState,
+const formReducer: Reducer<formState, FormAction> = (
+    state: formState = initialState,
     action: FormAction
-): inputState => {
+): formState => {
     switch (action.type) {
         case FormActionType.NAMEINPUT:
             return {
@@ -33,6 +37,20 @@ const formReducer: Reducer<inputState, FormAction> = (
                 ...state,
                 message: action.input
             };
+        case FormActionType.POSTDATASTART:
+            return {
+                ...state
+            };
+        case FormActionType.POSTDATASUCCEED:
+            return {
+                ...state,
+                resStatus: action.payload.result.status
+            }
+        case FormActionType.POSTDATAFAIL:
+            return {
+                ...state,
+                resStatus: action.payload.result.status
+            }
         default: {
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const _: never = action.type;

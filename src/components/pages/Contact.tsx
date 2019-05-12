@@ -9,6 +9,8 @@ import Input from '@material-ui/core/Input'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
+import { formData } from '../../actions/form';
+
 const styles = (theme: Theme): StyleRules => createStyles({
     heading: {
         padding: '10px 0'
@@ -43,6 +45,7 @@ interface Props {
     nameInput: (input: string) => void;
     emailInput: (input: string) => void;
     messageInput: (input: string) => void;
+    postFormDataStart: () => void;
 };
 
 type PropsWithStyle = Props & WithStyles<typeof styles>;
@@ -51,7 +54,8 @@ const Contact: FC<PropsWithStyle> =
     ({ classes,
        nameInput,
        emailInput,
-       messageInput
+       messageInput,
+       postFormDataStart
     }) => (
     <div>
         <div>
@@ -77,7 +81,7 @@ const Contact: FC<PropsWithStyle> =
                     placeholder="example@gmail.com"
                     fullWidth={true}
                     className={classes.input}
-                    onChange={e => nameInput(e.target.value)} />
+                    onChange={e => emailInput(e.target.value)} />
             </FormControl>
             <FormControl className={classes.form}>
                 <FormLabel required={true}>メッセージ内容</FormLabel>
@@ -90,7 +94,7 @@ const Contact: FC<PropsWithStyle> =
             </FormControl>
         </div>
         <div className={classes.buttonArea}>
-            <Button variant="outlined" className={classes.button}>送信する</Button>
+            <Button variant="outlined" className={classes.button} onClick={() => postFormDataStart()}>送信する</Button>
         </div>
     </div>
 );
