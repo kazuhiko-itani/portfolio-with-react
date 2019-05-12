@@ -1,6 +1,4 @@
 import { Reducer } from 'redux';
-import { AxiosError } from 'axios';
-
 import { FormAction, FormActionType } from './actions/form';
 
 export interface formState {

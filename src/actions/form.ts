@@ -1,5 +1,3 @@
-import { AxiosError } from 'axios';
-
 // sagaの部分を分離したい。。。
 export enum FormActionType {
     NAMEINPUT = 'FORM/NAMEINPUT',

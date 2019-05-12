@@ -9,8 +9,6 @@ import Input from '@material-ui/core/Input'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-import { formData } from '../../actions/form';
-
 const styles = (theme: Theme): StyleRules => createStyles({
     heading: {
         padding: '10px 0'
