@@ -80,7 +80,7 @@ const Works: FC<WithStyles<typeof styles>> = ({ classes }) => (
                                         </Grid>
                                         <Grid sm={12} md={6} item>
                                             <p>制作年: {data.year}</p>
-                                            <p>{data.text}</p>
+                                            <p className={classes.workDetail}>{data.text}</p>
                                             <a href={data.github}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
