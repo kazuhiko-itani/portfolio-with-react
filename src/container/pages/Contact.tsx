@@ -3,13 +3,9 @@ import { Dispatch } from 'redux';
 
 import { nameInput, emailInput, messageInput, submitForm } from '../../actions/form';
 import Contact from '../../components/pages/Contact';
-import { formState } from '../../reducer';
 
 interface StateProps {
-    name: string;
-    email: string;
-    message: string;
-    resStatus: string;
+    resStatus: '' | 'success' | 'error' | 'validate';
 }
 
 interface DispatchProps {
@@ -19,10 +15,7 @@ interface DispatchProps {
     postFormDataStart: () => void;
 }
 
-const mapStateToProps = (state: formState): StateProps => ({
-    name: state.name,
-    email: state.email,
-    message: state.message,
+const mapStateToProps = (state: StateProps): StateProps => ({
     resStatus: state.resStatus
 });
 

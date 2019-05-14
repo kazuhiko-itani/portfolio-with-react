@@ -23,8 +23,22 @@ const styles = (theme: Theme): StyleRules => createStyles({
     input: {
         marginTop: 10
     },
+    submitArea: {
+        position: 'relative'
+    },
+    submitSuccess: {
+        color: 'green',
+        fontSize: 14,
+        textAlign: 'center',
+    },
+    submitError: {
+        color: 'red',
+        fontSize: 14,
+        textAlign: 'center',
+    },
     buttonArea: {
         textAlign: 'center',
+        marginTop: 10,
         [theme.breakpoints.down('sm')]: {
             marginBottom: 30,
         }
@@ -36,10 +50,11 @@ const styles = (theme: Theme): StyleRules => createStyles({
             padding: '10px 0',
             width: '50%'
         }
-    }
+    },
 });
 
 interface Props {
+    resStatus: '' | 'success' | 'error' | 'validate';
     nameInput: (input: string) => void;
     emailInput: (input: string) => void;
     messageInput: (input: string) => void;
@@ -50,6 +65,7 @@ type PropsWithStyle = Props & WithStyles<typeof styles>;
 
 const Contact: FC<PropsWithStyle> =
     ({ classes,
+       resStatus,
        nameInput,
        emailInput,
        messageInput,
@@ -91,8 +107,23 @@ const Contact: FC<PropsWithStyle> =
                     onChange={e => messageInput(e.target.value)}></TextField>
             </FormControl>
         </div>
-        <div className={classes.buttonArea}>
-            <Button variant="outlined" className={classes.button} onClick={() => postFormDataStart()}>送信する</Button>
+        <div className={classes.submitArea}>
+            {resStatus === '' ? '' : resStatus === 'success' ? (
+                <div className={classes.submitSuccess}>
+                    <span>データを送信しました。確認後、お返事いたします。</span>
+                </div>
+            ) : resStatus === 'error' ? (
+                <div className={classes.submitError}>
+                    <span>送信に失敗しました。全てのフォームに内容が入力されているかご確認ください。</span>
+                </div>
+            ) : (
+                <div className={classes.submitError}>
+                    <span>未入力の項目があります。</span>
+                </div>
+            )}
+            <div className={classes.buttonArea}>
+                <Button variant="outlined" className={classes.button} onClick={() => postFormDataStart()}>送信する</Button>
+            </div>
         </div>
     </div>
 );

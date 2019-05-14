@@ -46,6 +46,7 @@
     "@types/react-router-dom": "^4.3.2",
     "axios": "^0.18.0",
     "axios-jsonp": "^1.0.2",
+    "firebase": "^6.0.2",
     "react-redux": "^7.0.3",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",

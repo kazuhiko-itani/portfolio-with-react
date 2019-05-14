@@ -1,4 +1,4 @@
-// sagaの部分を分離したい。。。
+// @todo sagaの部分は別ファイルに分離する。
 export enum FormActionType {
     NAMEINPUT = 'FORM/NAMEINPUT',
     EMAILINPUT = 'FORM/EMAILINPUT',

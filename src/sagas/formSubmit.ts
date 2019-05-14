@@ -1,44 +1,28 @@
-import axios from 'axios';
-import { select, all, call, fork, put, takeLatest } from 'redux-saga/effects';
-import { formData, FormActionType, submitForm } from '../actions/form';
+import { select, all, fork, put, takeLatest } from 'redux-saga/effects';
+import { firebaseDb } from '../firebase/index';
 
-const jsonpAdapter = require('axios-jsonp');
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbzSmIm1Ht-HBR4fnDD5TiaHdMSb402QtAOVspcVzTeAKpX2Y3M/exec';
-
-// axiosの返り値ってなんなんだ・・・？（anyで逃げ）
-function postFormDataApi(data: formData): any {
-    return axios({
-        method: 'post',
-        url: GAS_URL,
-        params: { data },
-        adapter: jsonpAdapter,
-    })
-    .then(res => {
-        return res;
-    })
-    .catch (err => {
-        return err;
-    });
-}
+import { FormActionType, submitForm } from '../actions/form';
+const contactDb = firebaseDb.ref('contact');
 
 function* runPostFormData(action: ReturnType<typeof submitForm.start>) {
     const data = yield select();
-    if (!data.name || !data.email || !data.message) return;
-
-    try {
-        const api = postFormDataApi(data);
-        const res = yield call(api);
-
-        console.log(res);
-
-        if (res.status === 200) {
-            yield put(submitForm.succeed(res.status));
-        } else {
-            yield put(submitForm.fail(res.status));
-        }
-    } catch (err) {
-        yield put(submitForm.fail({ status: 'network error'}));
+    if (!data.name || !data.email || !data.message) {
+        yield put(submitForm.fail({ status: 'validate' }));
+        return;
     }
+
+    const res = contactDb.push({
+        name: data.name,
+        email: data.email,
+        message: data.message,
+    });
+
+    if (res.key) {
+        yield put(submitForm.succeed({ status: 'success' }));
+        return;
+    }
+
+    yield put(submitForm.fail({ status: 'error' }));
 }
 
 export function* watchPostFormData() {
