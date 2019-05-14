@@ -35,6 +35,11 @@ const styles = (theme: Theme): StyleRules => createStyles({
         fontSize: 24,
         marginRight: 10,
         verticalAlign: 'middle'
+    },
+    workDetail: {
+        [theme.breakpoints.down('sm')]: {
+            lineHeight: '1.6'
+        }
     }
 });
 
@@ -50,7 +55,7 @@ const Works: FC<WithStyles<typeof styles>> = ({ classes }) => (
                                 <CardContent className={classes.cardContent}>
                                     <Typography variant="h3" className={classes.cardHeading}>{data.title}</Typography>
                                     <p>期間: {data.period}</p>
-                                    <p> {data.text}</p>
+                                    <p className={classes.workDetail}> {data.text}</p>
                                 </CardContent>
                             </Card>
                         </Grid>
